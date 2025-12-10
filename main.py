@@ -1,4 +1,7 @@
-from datos.conexion import Base, motor_db
+from datos.conexion import motor_db
+from modelos.modelos import Base
+
+
 from negocio import (
     registrar_usuario_negocio, 
     login_negocio,
@@ -21,16 +24,16 @@ def menu_principal():
         print("="*30)
 
         if not usuario_autenticado:
-            print("1. Registrar Usuario (Encriptado)")
+            print("1. Registrar Usuario (encriptado)")
             print("2. Iniciar Sesión")
             print("0. Salir")
         else:
             print("--- Modulo de Posts (JSONPlaceholder) ---")
-            print("3. Obtener Posts de API y guardar en la base de datos (GET)")
+            print("3. Obtener Posts de API y guardar en la base de datos")
             print("4. Ver Posts guardados localmente")
-            print("5. Crear nuevo Post en API (POST)")
-            print("6. Modificar Post en API (PUT)")
-            print("7. Eliminar Post en API (DELETE)")
+            print("5. Crear nuevo Post en API POST")
+            print("6. Modificar Post en API PUT")
+            print("7. Eliminar Post en API DELETE")
             print("0. Cerrar Sesión / Salir")
 
         opcion = input("\nSeleccione una opción: ")
@@ -52,7 +55,7 @@ def menu_principal():
                     print("Saliendo...")
                     break
                 else:
-                    print("Opción no válida.")
+                    print("Opcion no valida.")
 
             else: 
                 if opcion == "3":
@@ -64,7 +67,7 @@ def menu_principal():
                 elif opcion == "5":
                     print("\n--- Nuevo Post ---")
                     t = input("Título: ")
-                    b = input("Contenido (Body): ")
+                    b = input("Descripción: ")
 
                     codigo, resp = crear_post_nuevo(t, b, 1)
                     print(f"Resultado: {codigo} - {resp}")
@@ -87,7 +90,7 @@ def menu_principal():
                     print("Opción no válida.")
         
         except Exception as e:
-            print(f"Ocurrió un error inesperado en el menú: {e}")
+            print(f"Ocurrió un error inesperado en el menu: {e}")
 
 if __name__ == "__main__":
     menu_principal()

@@ -1,7 +1,7 @@
 from modelos.modelos import Post
 from datos.insertar_datos import insertar_objeto
 from datos.obtener_datos import obtener_todos_los_posts
-from servicios.api_client import ClienteAPI 
+from servicios.api_data import ClienteAPI 
 
 cliente = ClienteAPI()
 
@@ -21,7 +21,6 @@ def sincronizar_posts_api_db():
             title=p_json['title'],
             body=p_json['body']
         )
-        # Guardamos en BD
         if insertar_objeto(nuevo_post):
             contador += 1
             
